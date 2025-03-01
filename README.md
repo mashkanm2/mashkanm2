@@ -1,5 +1,6 @@
 
-![alt text](https://github.com/mashkanm2/mashkanm2/blob/main/resume.png?raw=true)
+![alt text](https://github.com/mashkanm2/mashkanm2/blob/main/resume/resume.png?raw=true)
+
 ## Credits
 - [Risen-Theme](https://github.com/xriley/Risen-Theme)
 - [Bootstrap](http://getbootstrap.com/)
