@@ -13,6 +13,17 @@
 AI and BackEnd development with more than 8 years of experience in Python and C# for industrial applications. Due to my interest in this field, I have self-studied and completed courses in Udemy and Packt.
 
 ## Work Experience
+### Python Backend Developer
+**Advanced Analytics Australia**  
+*2025 - present*  
+- Django REST API Architecture
+- React.js Frontend 
+- Low-latency Video Streaming (WebRTC)
+- Redis-based FIFO queues for inter-process communication
+- GRPC channels between edge camera devices and the central server
+- Concurrency & Parallelism ( asyncio and Celery).
+- **Technologies used:** Python, Asyncio, Redis, Celery , gRPC, JavaScript, WebRTC, Django-rest-framework.
+
 ### Python Developer
 **Ahmadi Roshan Research Institute**  
 *2023 - 2024*  
