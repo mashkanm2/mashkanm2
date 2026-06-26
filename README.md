@@ -10,87 +10,67 @@
 - Location: Iran-Tehran
 
 ## About Me
-AI and BackEnd development with more than 8 years of experience in Python and C# for industrial applications. Due to my interest in this field, I have self-studied and completed courses in Udemy and Packt.
+**Senior Python Developer** with over **9 years of hands-on experience** designing and scaling robust serverside systems. Expertise in **Django, Django Rest Framework (DRF)**, and **FastAPI**, with a strong focus on performance, reliability, and clean architecture. Successfully led an AI engineering team, driving the development of intelligent services and high-throughput APIs. Passionate about building maintainable codebases and delivering backend solutions that support complex product needs
 
 ## Work Experience
-### Python Backend Developer
-**Advanced Analytics Australia**  
-*2025 - present*  
-- Django REST API Architecture
-- React.js Frontend 
-- Low-latency Video Streaming (WebRTC)
-- Redis-based FIFO queues for inter-process communication
-- GRPC channels between edge camera devices and the central server
-- Concurrency & Parallelism ( asyncio and Celery).
-- **Technologies used:** Python, Asyncio, Redis, Celery , gRPC, JavaScript, WebRTC, Django-rest-framework.
+### Python Backend Developer - Advanced Analytics Australia
+*April 2025 - Present*
+- Designed and implemented high-performance **RESTful APIs using Django and Django REST Framework (DRF)** for real-time detection, tracking, and identification of individuals in large-scale surveillance environments, with automated data persistence pipelines.
+- Improved large-scale image search performance by 60% through **Apache Solr** optimization, enabling efficient indexing and retrieval across datasets containing 1M+ images.
+- Developed full-stack web applications using Django and React.js, with emphasis on secure API design, authentication workflows, and production-grade backend architecture.
+- Developed industrial safety monitoring systems using **Django REST Framework (DRF)** to automate safety-control workflows in factory environments, integrating **WebRTC streaming pipelines** for real-time Full HD video transmission between backend services and frontend clients.
+- Built scalable backend infrastructure with **JWT authentication**,**Redis-based caching**, and optimized **Django ORM** database interactions, significantly improving response times and reducing repeated database load.
+- Designed and implemented **real-time event streaming pipelines using Apache Kafka**, replacing traditional FIFO job queue architecture to improve throughput, asynchronous processing reliability, and service decoupling across distributed backend components.
+- Engineered a **custom health-checking and observability framework** for camera devices and backend services, enabling automated service monitoring, fault detection, and proactive recovery across distributed infrastructure.
+- Managed and optimized real-time processing pipelines for 6 simultaneous HD camera streams, achieving **end-to-end latency below 80ms** for detection and tracking workloads under production conditions.
+- Data-streaming solutions using Django and gRPC for real-time synchronization between edgeprocessing devices and backend.
+- Integrated **Prometheus-based observability** and monitoring systems, enabling real-time metrics collection, backend performance analysis, service health monitoring, and operational visibility across Django services and distributed microservice architecture.
 
-### Python Developer
-**Ahmadi Roshan Research Institute**  
-*2023 - 2024*  
-- Server Side Quadcopter Control.
-- **Technologies used:** Python, Socket Programming, Asyncio, MultiThread, gRPC, JavaScript, DeepLearning, FastAPI.
 
-### Python Developer
-**ITSAAZ**  
-*2021 - 2023*  
-- Creating authentication microservices in the country's judicial system.
-- **Achievements:**
-  - Streaming video on UDP socket for face detection and face recognition along with creating a cache to count people traffic and reduce processing overhead in face recognition models.
-  - Apache Solr database and clustering feature vector to increase recognition speed.
-  - Implemented and maintained CI/CD pipelines for microservices.
-  - Dockerized FastAPI, PostgreSQL, and Apache Solr DB.
-- **Technologies used:** Python, FastAPI, Django, Deep Learning, Docker, Apache Solr, Grafana, PostgreSQL.
+### Python Backend Developer - ITSAAZ
+*February 2022 - November 2024*
+- **Designed and deployed a scalable microservices architecture** using **FastAPI** for secure authentication system, including face recognition, video-based sentence similarity checks, and OCR processing of national ID cards.
+- Built **Django-based** systems for person detection on CCTV streams, including **real-time video transmission** over UDP socket, recognition, and traffic counting, leveraging **PostgreSQL** and **Apache Solr** with feature-vector clustering to handle high-volume data workloads.
+- Designed and optimized **RNN models** for human-behavior recognition and activity analysis.
+- Containerized core services with **Docker** and created end-to-end **CI/CD pipelines** to automate
+deployment, testing, and ensure system reliability.
 
-### Python Developer
-**Arman Pazhohan SOBA**  
-*2021 - 2021*  
-- Urban electricity consumption forecasting service.
-- **Achievements:**
-  - Collaborated on the development of scalable web applications using Python and Django.
-  - Engineered backend services using Django, clustered electrical, weather, price of fossil fuels, price of electrical energy.
-  - MultiProcess and PoolProcessing for asynchronous forecaster model training.
-- **Technologies used:** Django, Deep Learning, PostgreSQL, MultiProcessing.
 
-### Software Developer
-**Farand System**  
-*2019 - 2020*  
-- Smart robot.
-- **Achievements:**
-  - Experience with SQL Server and C# Windows form.
-  - Socket programming and stream video (Python and C#).
-  - MultiThread and asynchronous processing in Python.
-- **Technologies used:** Python, Socket Programming, MultiProcessing, MultiThread, C#, SQL Server.
+### Python Developer - QUANTRISK
+*May 2021 - November 2021*
+- Built **Django-based** Urban electricity consumption forecasting service.
+- Applied **multiprocessing and Pool Processing** for asynchronous forecaster model training.
+- Collaborated on the development of scalable web applications using Python and Django.
+- Forecasting electrical power using **RNN models , XGBoost , LightGBM ,..**
 
-## Skills & Tools
-- Python-OOP
-- MultiProcess Architecture
-- Socket Programming
-- Django and REST APIs
-- FastAPI
-- PostgreSQL
-- Deep Learning (torch, tensorflow, ONNX, ...)
-- Docker
-- Redis
-- Celery
-- Git
-- Linux
-- MongoDB
-- GraphQL
-- C#
-- ASP.NET
+### Python & C# Developer - FARAND SYSTEM
+*September 2019 - October 2020*
+- Applied **computer vision and image-processing** techniques for automated fault detection and quality-control workflows.
+- Integrated **NVIDIA Jetson Nano** (Python) with **C# server systems**, implementing video streaming on socket between Python services and Windows Form applications, and managing data synchronization with **SQL Server**.
+- Contributed to the development of an **intelligent robotic platform (MOOR III)**, supporting perception, control, and system integration components.
+
 
 ## Education
-### MSc in Computer Engineering
-**Maleke’ Ashtar University of Technology, Iran-Tehran**  
-*2018 - 2021*
+### M.Sc. Electrical Telecommunications Engineering - Malek e' ashtar University of Technolog  
+*2017 - 2020*
+- Specialized in Machine Learning and Deep Learning for AI solutions.
+- Advanced knowledge in Machine Vision
 
-### BSc in Electrical Engineering
-**Sahand University of Technology, Iran-Tabriz**  
+### B.Sc. Electrical Control Engineering - Sahand University of Technology
 *2013 - 2017*
+- Start to learning C# programming and Image processing and opencv
+### Skills
+#### Technical Skills
+- **Programming Languages**: Python, C#, Golang experience
+- **Frameworks**: Django, Django Rest Framework (DRF), FastAPI
+- **Databases**: PostgreSQL,MySQL, SQL Server
+- **Microservices and APIs**: RESTful APIs, Design Patterns, gRPC
+- **DevOps and Tools**: Docker, CI/CD, Linux
+- **Queue Systems**: Redis, RabbitMQ, Celery
+- **Version Control**: Git
 
-## Projects
-### Django Travelmate
-Creating a social media for sharing trips images and experience as well as accessing traveler and tour leader information. [GitHub](https://github.com/mashkanm2/Django-socialMediaApp/tree/develope)
-
-## Languages
-- English
+#### Soft Skills
+- Collaboration: Strong teamwork across multi-disciplinary teams.
+- Problem-Solving: Analytical and creative approach to tackling complex challenges.
+- Communication: Clear and effective communication with stakeholders and team members.
+- Adaptability: Thrives in dynamic environments with evolving technologies.
