@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family,"Segoe UI", Arial);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: Arial;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+body {
+	font-family: Arial;
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> or <div class="page"></div> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="mostafa-mashkani">
+	<code style="font-family: Arial;color : rgb(2, 2, 73)">Mostafa Mashkani</code>
+	<span style="font-family: Arial;font-size:16px">( Python Developer )</span>
+</h1>
+<h2 id="contact-information"><code style="font-family: Arial;color : rgb(3, 133, 133)">Contact Information</code></h2>
+<ul>
+<li>Email: <a href="mailto:mashkanm2@gmail.com"><u>mashkanm2@gmail.com</u></a></li>
+<li>Phone: <a href="tel:+989154802743"><u>+989154802743</u></a></li>
+<li>LinkedIn: <a href="https://www.linkedin.com/in/mostafa-mashkani"><u>mostafa-mashkani</u></a></li>
+<li>GitHub: <a href="https://github.com/mashkanm2"><u>github.com/mashkanm2</u></a></li>
+<li>Location: Iran-Tehran</li>
+</ul>
+<hr>
+<h2 id="about-me"><code style="font-family: Arial;color : rgb(3, 133, 133)">About Me</code></h2>
+<p><strong>Senior Python Developer</strong> with over <strong>9 years of hands-on experience</strong> designing and scaling robust serverside systems. Expertise in <strong>Django, Django Rest Framework (DRF)</strong>, and <strong>FastAPI</strong>, with a strong focus on performance, reliability, and clean architecture. Successfully led an AI engineering team, driving the development of intelligent services and high-throughput APIs. Passionate about building maintainable codebases and delivering backend solutions that support complex product needs</p>
+<hr>
+<h2 id="work-experience"><code style="font-family: Arial;color : rgb(3, 133, 133)">Work Experience</code></h2>
+<h3 id="python-backend-developer---advanced-analytics-australia"><code style="font-family: Arial;color : rgb(2, 107, 72)">Python Backend Developer - Advanced Analytics Australia</code></h3>
+<p><u><em>April 2025 - Present</em></u></p>
+<ul>
+<li>Designed and implemented high-performance <strong>RESTful APIs using Django and Django REST Framework (DRF)</strong> for real-time detection, tracking, and identification of individuals in large-scale surveillance environments, with automated data persistence pipelines.</li>
+<li>Improved large-scale image search performance by 60% through <strong>Apache Solr</strong> optimization, enabling efficient indexing and retrieval across datasets containing 1M+ images.</li>
+<li>Developed full-stack web applications using Django and React.js, with emphasis on secure API design, authentication workflows, and production-grade backend architecture.</li>
+<li>Developed industrial safety monitoring systems using <strong>Django REST Framework (DRF)</strong> to automate safety-control workflows in factory environments, integrating <strong>WebRTC streaming pipelines</strong> for real-time Full HD video transmission between backend services and frontend clients.</li>
+<li>Built scalable backend infrastructure with <strong>JWT authentication</strong>,<strong>Redis-based caching</strong>, and optimized <strong>Django ORM</strong> database interactions, significantly improving response times and reducing repeated database load.</li>
+<li>Designed and implemented <strong>real-time event streaming pipelines using Apache Kafka</strong>, replacing traditional FIFO job queue architecture to improve throughput, asynchronous processing reliability, and service decoupling across distributed backend components.</li>
+<li>Engineered a <strong>custom health-checking and observability framework</strong> for camera devices and backend services, enabling automated service monitoring, fault detection, and proactive recovery across distributed infrastructure.</li>
+<li>Managed and optimized real-time processing pipelines for 6 simultaneous HD camera streams, achieving <strong>end-to-end latency below 80ms</strong> for detection and tracking workloads under production conditions.</li>
+<li>Data-streaming solutions using Django and gRPC for real-time synchronization between edgeprocessing devices and backend.</li>
+<li>Integrated <strong>Prometheus-based observability</strong> and monitoring systems, enabling real-time metrics collection, backend performance analysis, service health monitoring, and operational visibility across Django services and distributed microservice architecture.</li>
+</ul>
+<h3 id="python-backend-developer---itsaaz"><code style="font-family: Arial;color : rgb(2, 107, 72)">Python Backend Developer - ITSAAZ</code></h3>
+<p><u><em>February 2022 - November 2024</em></u></p>
+<ul>
+<li><strong>Designed and deployed a scalable microservices architecture</strong> using <strong>FastAPI</strong> for secure authentication system, including face recognition, video-based sentence similarity checks, and OCR processing of national ID cards.</li>
+<li>Built <strong>Django-based</strong> systems for person detection on CCTV streams, including <strong>real-time video transmission</strong> over UDP socket, recognition, and traffic counting, leveraging <strong>PostgreSQL</strong> and <strong>Apache Solr</strong> with feature-vector clustering to handle high-volume data workloads.</li>
+<li>Designed and optimized <strong>RNN models</strong> for human-behavior recognition and activity analysis.</li>
+<li>Containerized core services with <strong>Docker</strong> and created end-to-end <strong>CI/CD pipelines</strong> to automate
+deployment, testing, and ensure system reliability.</li>
+</ul>
+<h3 id="python-developer---quantrisk"><code style="font-family: Arial;color : rgb(2, 107, 72)">Python Developer - QUANTRISK</code></h3>
+<p><u><em>May 2021 - November 2021</em></u></p>
+<ul>
+<li>Built <strong>Django-based</strong> Urban electricity consumption forecasting service.</li>
+<li>Applied <strong>multiprocessing and Pool Processing</strong> for asynchronous forecaster model training.</li>
+<li>Collaborated on the development of scalable web applications using Python and Django.</li>
+<li>Forecasting electrical power using <strong>RNN models , XGBoost , LightGBM ,..</strong></li>
+</ul>
+<h3 id="python--c-developer---farand-system"><code style="font-family: Arial;color : rgb(2, 107, 72)">Python &amp; C# Developer - FARAND SYSTEM</code></h3>
+<p><u><em>September 2019 - October 2020</em></u></p>
+<ul>
+<li>Applied <strong>computer vision and image-processing</strong> techniques for automated fault detection and quality-control workflows.</li>
+<li>Integrated <strong>NVIDIA Jetson Nano</strong> (Python) with <strong>C# server systems</strong>, implementing video streaming on socket between Python services and Windows Form applications, and managing data synchronization with <strong>SQL Server</strong>.</li>
+<li>Contributed to the development of an <strong>intelligent robotic platform (MOOR III)</strong>, supporting perception, control, and system integration components.</li>
+</ul>
+<hr>
+<h2 id="education"><code style="font-family: Arial;color : rgb(3, 133, 133)">Education</code></h2>
+<h3 id="msc-electrical-telecommunications-engineering---malek-e-ashtar-university-of-technolog">M.Sc. Electrical Telecommunications Engineering - Malek e' ashtar University of Technolog</h3>
+<p><u><em>2017 - 2020</em></u></p>
+<ul>
+<li>Specialized in Machine Learning and Deep Learning for AI solutions.</li>
+<li>Advanced knowledge in Machine Vision</li>
+</ul>
+<h3 id="bsc-electrical-control-engineering---sahand-university-of-technology">B.Sc. Electrical Control Engineering - Sahand University of Technology</h3>
+<p><u><em>2013 - 2017</em></u></p>
+<ul>
+<li>Start to learning C# programming and Image processing and opencv</li>
+</ul>
+<hr>
+<h2 id="skills"><code style="font-family: Arial;color : rgb(3, 133, 133)">Skills</code></h2>
+<h3 id="technical-skills"><code style="font-family: Arial;color : rgb(2, 107, 72)">Technical Skills</code></h3>
+<ul>
+<li><strong>Programming Languages</strong>: Python, C#, Golang experience</li>
+<li><strong>Frameworks</strong>: Django, Django Rest Framework (DRF), FastAPI</li>
+<li><strong>Databases</strong>: PostgreSQL,MySQL, SQL Server</li>
+<li><strong>Microservices and APIs</strong>: RESTful APIs, Design Patterns, gRPC</li>
+<li><strong>DevOps and Tools</strong>: Docker, CI/CD, Linux</li>
+<li><strong>Queue Systems</strong>: Redis, RabbitMQ, Celery</li>
+<li><strong>Version Control</strong>: Git</li>
+</ul>
+<h3 id="soft-skills"><code style="font-family: Arial;color : rgb(2, 107, 72)">Soft Skills</code></h3>
+<ul>
+<li>Collaboration: Strong teamwork across multi-disciplinary teams.</li>
+<li>Problem-Solving: Analytical and creative approach to tackling complex challenges.</li>
+<li>Communication: Clear and effective communication with stakeholders and team members.</li>
+<li>Adaptability: Thrives in dynamic environments with evolving technologies.</li>
+</ul>
+
+</body>
+</html>
